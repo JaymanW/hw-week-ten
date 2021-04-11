@@ -1,4 +1,4 @@
-[![Project Demo](./readmeGeneratorDemo.PNG)](https://youtu.be/UanADPU46dE)
+[![Project Demo](./hwWeekTenDemo.PNG)](https://youtu.be/UanADPU46dE)
 
   # hw-week-ten
   
