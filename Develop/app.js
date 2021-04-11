@@ -29,27 +29,26 @@ const selectPosition = [
 const generateQuestions = () => {
     inquirer.prompt(selectPosition)
         .then(data => {
-            // console.log(data.positionSelect);
             if (data.positionSelect === "Manager") {
                 inquirer.prompt(managerQuestions)
                 .then(input => {
                     const newManager = new Manager(input.id, input.name, input.email, input.officeNum);
                     employeeList.push(newManager);
-                    generateQuestions();
+                    newPosition();
                 });
             } else if (data.positionSelect === "Engineer") {
                 inquirer.prompt(engineerQuestions)
                 .then(input => {
                     const newEngineer = new Engineer(input.id, input.name, input.email, input.github);
                     employeeList.push(newEngineer);
-                    generateQuestions();
+                    newPosition();
                 });
             } else if (data.positionSelect === "Intern") {
                 inquirer.prompt(internQuestions)
                 .then(input => {
                     const newIntern = new Intern(input.id, input.name, input.email, input.school);
                     employeeList.push(newIntern);
-                    generateQuestions();
+                    newPosition();
                 });
             }
         })
