@@ -17,7 +17,43 @@ const managerQuestions = require('./questions/managerQuestions');
 const engineerQuestions = require('./questions/engineerQuestions');
 const internQuestions = require('./questions/internQuestions');
 
+const selectPosition = [
+    {
+        type: "list",
+        name: "positionSelect",
+        message: "Please select this employees position.",
+        choices: ["Manager", "Engineer", "Intern"]
+    }
+];
 
+const newPosition = () => {
+    inquirer.prompt([
+        {
+            type: "confirm",
+            name: "newPosition",
+            message: "Do you have another position to enter?"
+        }
+    ]).then(data => {
+        if (data.newPosition === true) {
+            generateQuestions();
+        } else {
+            fs.writeFile(outputPath, render(employeeList), err => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log(`Successfully generated team roster!`);
+                }
+            })
+        }
+    })
+}
+
+const startup = () => {
+    console.log(`Beginning team builder. Begin by choosing your first position!`);
+    generateQuestions();
+}
+
+startup();
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
