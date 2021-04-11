@@ -1,6 +1,6 @@
 class Employee {
     constructor(ID, name, email) {
-        this.position = "",
+        this.position = "Employee",
         this.ID = ID,
         this.name = name,
         this.email = email
